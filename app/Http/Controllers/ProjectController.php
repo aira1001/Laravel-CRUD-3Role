@@ -48,7 +48,7 @@ class ProjectController extends Controller
             $project = new Project();
             $project->nama = $projectValidate['nama'];
             $project->keterangan = $projectValidate['keterangan'];
-            $project->status = $request->status;
+            $project->status = $request->status? $request->status : false;
             $project->id_user = Auth::id();
             $project->save();
 
@@ -98,7 +98,7 @@ class ProjectController extends Controller
         try {
             $project->nama = $request->nama;
             $project->keterangan = $request->keterangan;
-            $project->status = $request->status;
+            $project->status = $request->status? $request->status : false;
             $project->id_user = Auth::id();
             $project->save();
 
