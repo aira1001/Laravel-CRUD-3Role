@@ -40,6 +40,7 @@
                                         class="me-auto p-2 badge {{ $listproject->status ? 'text-bg-success' : 'text-bg-danger' }}"
                                         style="width: 60px; margin: 5px; height: 25px;">{{ $listproject->status ? 'success' : 'false' }}
                                     </span>
+
                                     <?php $userRole = Auth::user()->id_role; ?>
                                     @if ($userRole != 1)
                                         <a class="p-2 bi bi-trash text-danger" style="font-size: 20px"
@@ -48,10 +49,11 @@
                                             href="{{ route('project.edit', $listproject->id_project) }}"></a>
                                     @endif
                                 </div>
+
                                 <div class="card-body">
                                     <h5 class="card-title fw-bold">{{ $listproject->nama }}</h5>
                                     <p class="card-text text-break">{{ $listproject->keterangan }}.</p>
-                                    {{-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
+                                    <p class="card-text"><small class="text-muted">Last updated {{$listproject->updated_at->diffForHumans()}}</small></p>
                                 </div>
                             </div>
                         </div>
